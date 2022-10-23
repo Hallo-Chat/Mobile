@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBEBEB"
+    tools:context=".view.ChatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24_white"
+                android:background="@android:color/transparent"
+                android:padding="10dp"/>
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/cube"
+                app:civ_border="false"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên bạn bè"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_trangThai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Online 11h trước"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_call_24"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    app:tint="@android:color/white"/>
+
+                <ImageButton
+                    android:id="@+id/btn_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    app:tint="@android:color/white"/>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_chat"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/ic_baseline_insert_emoticon_24"
+            android:background="@color/white"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Tin nhắn"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            android:background="@color/white"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/ic_baseline_mic_none_24"
+            android:background="@color/white"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/ic_baseline_image_24"
+            android:background="@color/white"/>
+     </LinearLayout>
+    
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
