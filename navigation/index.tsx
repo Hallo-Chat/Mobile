@@ -25,8 +25,9 @@ import ChatScreen from '../screens/ChatScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 import { MaterialIcons } from '@expo/vector-icons'; 
-import LoginScreen from '../screens/LoginScreen';
 import SplashScreen from '../screens/SplashScreen';
+import SignInScreen from '../screens/SignInScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -55,8 +56,18 @@ function RootNavigator() {
         }}
       />
       <Stack.Screen 
-        name='LoginScreen'
-        component={LoginScreen}
+        name='SignInScreen'
+        component={SignInScreen}
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen 
+        name='SignUpScreen'
+        component={SignUpScreen}
+        options={{
+          headerShown: false
+        }}
       />
       <Stack.Screen 
         name="HomeScreen" 

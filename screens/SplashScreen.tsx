@@ -1,31 +1,43 @@
-import { View, Text, Button, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Button, Dimensions, StyleSheet, Image, TouchableOpacity, StatusBar } from 'react-native'
 import React from 'react'
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const SplashScreen = () => {
+import * as Animatable from 'react-native-animatable';
+
+const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
+        <StatusBar backgroundColor='#009387' barStyle={'light-content'} />
       <View style={styles.header}>
-        <Image 
+        <Animatable.Image
+                animation='bounceIn'
+                duration={1500}
             source={require('../assets/logo/logo.png')}
             style={styles.logo}
             resizeMode='stretch'
         />
       </View>
-      <View style={styles.footer}>
+      <Animatable.View style={styles.footer}>
         <Text style={styles.title}>Stay connected with everyone!</Text>
         <Text style={styles.text}>Sign in with account</Text>
-        <TouchableOpacity onPress={() => alert('Click')}>
-            <LinearGradient
-                colors={['#08d4c4', '#01ab9d']}
-                style={styles.signIn}
-            >
-            <Text style={styles.textSign}>Get Started</Text>
-            </LinearGradient>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.button}>
+            <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
+                <LinearGradient
+                    colors={['#08d4c4', '#01ab9d']}
+                    style={styles.signIn}
+                >
+                <Text style={styles.textSign}>Get Started</Text>
+                <MaterialIcons 
+                    name='navigate-next'
+                    color= 'white'
+                    size={20}
+                />
+                </LinearGradient>
+            </TouchableOpacity>
+        </View>
+      </Animatable.View>
     </View>
   )
 }
