@@ -1,10 +1,10 @@
-import * as React from "react-native";
+import * as React from 'react-native';
 
-import { Text, View, Image, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from 'react-native';
 
-import ChatItem from "../components/chat_items/ChatItem";
+import ChatItem from '../../components/chat/ChatItem';
 
-import ChatRoomItemData from '../assets/dummy-data/ChatRooms';
+import ChatRoomItemData from '../../assets/dummy-data/ChatRooms';
 
 export default function TabOneScreen() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Image, Pressable, StyleSheet } from "react-native";
 
 import { useNavigation } from '@react-navigation/core';
 

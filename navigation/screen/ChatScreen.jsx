@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Text, View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 
-import Message from '../components/message/Message';
+import Message from '../../components/message/Message';
 
-import MessageData from '../assets/dummy-data/Chats';
-import MessageInput from '../components/message_input/MessageInput';
+import MessageData from '../../assets/dummy-data/Chats';
+import MessageInput from '../../components/input/MessageInput';
 
 import { useRoute } from '@react-navigation/core';
 
