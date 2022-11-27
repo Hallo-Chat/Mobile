@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image, StyleSheet, useWindowDimensions } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { MaterialIcons } from '@expo/vector-icons'
 
 // Screens
 import SplashScreen from './screen/SplashScreen'
@@ -17,6 +18,7 @@ import GroupChatScreen from './screen/GroupChatScreen'
 import SettingsScreen from './screen/SettingsScreen'
 
 import ChatScreen from './screen/ChatScreen';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const Stack = createNativeStackNavigator();
 
@@ -27,8 +29,57 @@ function MyStack() {
       <Stack.Screen name='SignInScreen' component={SignInScreen} options={{ headerShown: false }} />
       <Stack.Screen name='SignUpScreen' component={SignUpScreen} options={{ headerShown: false }} />
       <Stack.Screen name='HomeScreen' component={MyTabs} options={{ headerShown: false }} />
-      <Stack.Screen name='ChatScreen' component={ChatScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='ChatScreen' component={ChatScreen}
+        options={{
+          headerTitle: ChatHeader,
+          headerTintColor: '#029cf9',
+          headerStyle: {
+            marginLeft: -10
+          }
+        }} />
     </Stack.Navigator>
+  )
+}
+
+const HomeHeader = (props) => {
+
+  return (
+    <View style={{ 
+      flexDirection: 'row', 
+      justifyContent: 'space-between',
+      width: '100%',
+      height: '100%',
+      alignItems: 'center',
+      backgroundColor: '#029cf9'
+    }}>
+      <Image 
+        source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
+        style={{ width: 30, height: 30, borderRadius: 30 }}
+      />
+      <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#ffffff' }}>Home</Text>
+      <MaterialIcons name="more-horiz" size={24} color="white" style={{  }} onPress={() => alert('more...')} />
+    </View>
+  )
+}
+
+const ChatHeader = (props) => {
+
+  const { width } = useWindowDimensions();
+
+  return (
+    <View style={{ 
+      flexDirection: 'row', 
+      justifyContent: 'space-between', 
+      width,
+      alignItems: 'center'
+    }}>
+      <Image 
+        source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
+        style={{ width: 30, height: 30, borderRadius: 30, marginLeft: -20 }}
+      />
+      <Text style={{ flex: 1, textAlign: 'center', marginRight: '3%', fontWeight: 'bold', fontSize: 16 }}>{props.children}</Text>
+      <MaterialIcons name="more-horiz" size={24} color="black" style={{ marginRight: '9%' }} />
+    </View>
   )
 }
 
@@ -44,6 +95,12 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName={homeName}
       screenOptions={({route}) => ({
+        tabBarStyle: styles.tabBarStyle,
+        tabBarActiveTintColor: '#029cf9',
+        tabBarLabelStyle: {
+          paddingBottom: 2,
+          fontSize: 8
+        },
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           let rn = route.name;
@@ -59,23 +116,17 @@ function MyTabs() {
           // Return your icon
           return <Ionicons name={iconName} size={size} color={color} />
         },
-      })}
-      tabBarOptions={{
-        activeTintColor: '#029cf9',
-        inactiveTintColor: '#888a8b',
-        labelStyle: {
-          paddingBottom: 2,
-          fontSize: 8
-        },
-        style: {
-          paddingTop: 20,
-          height: 70,
-        }
-      }}>
+      })}>
 
         <Tab.Screen name={homeName} component={HomeScreen}
           options={{
-            headerShown: false,
+            headerStyle: {
+              backgroundColor: '#029cf9',
+            },
+            headerTitleStyle: {
+              color: '#ffffff'
+            },
+            headerTitle: HomeHeader
           }} />
         <Tab.Screen name={groupChatName} component={GroupChatScreen}
           options={{ 
@@ -83,11 +134,10 @@ function MyTabs() {
             tabBarBadgeStyle: {
               fontSize: 8,
             },
-            headerShown: false,
           }} />
         <Tab.Screen name={settingsName} component={SettingsScreen}
           options={{
-            headerShown: false,
+
           }} />
     </Tab.Navigator>
   );
@@ -102,3 +152,9 @@ const MainContainers = () => {
 }
 
 export default MainContainers
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    height: 48
+  }
+})
