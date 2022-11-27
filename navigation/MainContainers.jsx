@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, useWindowDimensions } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -18,7 +18,8 @@ import GroupChatScreen from './screen/GroupChatScreen'
 import SettingsScreen from './screen/SettingsScreen'
 
 import ChatScreen from './screen/ChatScreen';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler'
+
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,9 +34,6 @@ function MyStack() {
         options={{
           headerTitle: ChatHeader,
           headerTintColor: '#029cf9',
-          headerStyle: {
-            marginLeft: -10
-          }
         }} />
     </Stack.Navigator>
   )
@@ -64,13 +62,12 @@ const HomeHeader = (props) => {
 
 const ChatHeader = (props) => {
 
-  const { width } = useWindowDimensions();
-
   return (
     <View style={{ 
       flexDirection: 'row', 
       justifyContent: 'space-between', 
-      width,
+      width: '100%',
+      height: '100%',
       alignItems: 'center'
     }}>
       <Image 
@@ -122,6 +119,7 @@ function MyTabs() {
           options={{
             headerStyle: {
               backgroundColor: '#029cf9',
+              height: 48
             },
             headerTitleStyle: {
               color: '#ffffff'
@@ -155,6 +153,7 @@ export default MainContainers
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    height: 48
+    height: 48,
+    backgroundColor: '#fafbfd'
   }
 })
