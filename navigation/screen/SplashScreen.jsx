@@ -14,7 +14,7 @@ const SplashScreen = () => {
 
   return (
     <View style={styles.container}>
-        <StatusBar backgroundColor='#009387' barStyle={'light-content'} />
+        <StatusBar backgroundColor='#08456d' barStyle={'light-content'} />
       <View style={styles.header}>
         <Animatable.Image
                 animation='bounceIn'
@@ -30,7 +30,7 @@ const SplashScreen = () => {
         <View style={styles.button}>
             <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
+                    colors={['#0264A1', '#029cf9']}
                     style={styles.signIn}
                 >
                 <Text style={styles.textSign}>Get Started</Text>
@@ -55,7 +55,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#009387'
+        backgroundColor: '#029cf9'
     },
     header: {
         flex: 2,
