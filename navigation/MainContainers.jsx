@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -19,7 +19,8 @@ import SettingsScreen from './screen/SettingsScreen'
 
 import ChatScreen from './screen/ChatScreen';
 
-import { LinearGradient } from 'expo-linear-gradient';
+// Height Header
+import { useHeaderHeight } from '@react-navigation/elements';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,17 +31,23 @@ function MyStack() {
       <Stack.Screen name='SignInScreen' component={SignInScreen} options={{ headerShown: false }} />
       <Stack.Screen name='SignUpScreen' component={SignUpScreen} options={{ headerShown: false }} />
       <Stack.Screen name='HomeScreen' component={MyTabs} options={{ headerShown: false }} />
-      <Stack.Screen name='ChatScreen' component={ChatScreen}
+      <Stack.Screen name='ChatScreen' component={ChatScreen} 
         options={{
-          headerTitle: ChatHeader,
-          headerTintColor: '#029cf9',
+          headerStyle: {
+            backgroundColor: '#029cf9',
+            height: 48
+          },
+          headerTitleStyle: {
+            color: '#ffffff'
+          },
+          headerBackVisible: false,
+          headerTitle: ChatHeader
         }} />
     </Stack.Navigator>
   )
 }
 
 const HomeHeader = (props) => {
-
   return (
     <View style={{ 
       flexDirection: 'row', 
@@ -62,20 +69,24 @@ const HomeHeader = (props) => {
 
 const ChatHeader = (props) => {
 
+  const headerHeight = useHeaderHeight();
+  const windowWidth = Dimensions.get('window').width;
+
   return (
     <View style={{ 
       flexDirection: 'row', 
-      justifyContent: 'space-between', 
-      width: '100%',
-      height: '100%',
-      alignItems: 'center'
+      justifyContent: 'space-between',
+      width: windowWidth*90/100,
+      height: headerHeight,
+      alignItems: 'center',
+      backgroundColor: '#029cf9'
     }}>
       <Image 
         source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
-        style={{ width: 30, height: 30, borderRadius: 30, marginLeft: -20 }}
+        style={{ width: 30, height: 30, borderRadius: 30 }}
       />
-      <Text style={{ flex: 1, textAlign: 'center', marginRight: '3%', fontWeight: 'bold', fontSize: 16 }}>{props.children}</Text>
-      <MaterialIcons name="more-horiz" size={24} color="black" style={{ marginRight: '9%' }} />
+      <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 16, color: '#ffffff' }}>{props.children}</Text>
+      <MaterialIcons name="more-horiz" size={24} color="white" style={{  }} onPress={() => alert('more...')} />
     </View>
   )
 }
